@@ -13,6 +13,10 @@ import { GraphsComponent } from './pages/graphs/graphs.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidemenuComponent } from './shared/sidemenu/sidemenu.component';
 import { SettingsComponent } from './shared/settings/settings.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { CerebrosComponent } from './pages/cerebros/cerebros.component';
+import { appRouting } from './app.routes';
+
 
 @NgModule({
   declarations: [
@@ -25,11 +29,14 @@ import { SettingsComponent } from './shared/settings/settings.component';
     GraphsComponent,
     HeaderComponent,
     SidemenuComponent,
-    SettingsComponent
+    SettingsComponent,
+    RegisterComponent,
+    CerebrosComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    appRouting
   ],
   providers: [],
   bootstrap: [AppComponent]
