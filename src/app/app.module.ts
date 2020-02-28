@@ -16,6 +16,7 @@ import { SettingsComponent } from './shared/settings/settings.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { CerebrosComponent } from './pages/cerebros/cerebros.component';
 import { appRouting } from './app.routes';
+import { TitleComponent } from './shared/title/title.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { appRouting } from './app.routes';
     SidemenuComponent,
     SettingsComponent,
     RegisterComponent,
-    CerebrosComponent
+    CerebrosComponent,
+    TitleComponent
   ],
   imports: [
     BrowserModule,
