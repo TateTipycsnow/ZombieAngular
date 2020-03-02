@@ -17,6 +17,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { CerebrosComponent } from './pages/cerebros/cerebros.component';
 import { appRouting } from './app.routes';
 import { TitleComponent } from './shared/title/title.component';
+import { SettingsService } from './services/settings.service';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { TitleComponent } from './shared/title/title.component';
     FormsModule,
     appRouting
   ],
-  providers: [],
+  providers: [SettingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
