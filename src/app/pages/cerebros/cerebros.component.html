@@ -1,1 +1,29 @@
-<p>cerebros works!</p>
+<app-title></app-title>
+
+<div class="col-lg-6">
+    <div class="main-card mb-3 card">
+        <div class="card-body">
+            <h5 class="card-title">Simple table</h5>
+            <table class="mb-0 table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Descripcion</th>
+                        <th>Sabor</th>
+                        <th>Precio</th>
+                        <th>Imagen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cerebro of cerebros; let i = index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{ cerebro.Description }}</td>
+                        <td>{{ cerebro.Flavor }}</td>
+                        <td>{{ cerebro.Price }}</td>
+                        <td>{{ cerebro.Picture }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

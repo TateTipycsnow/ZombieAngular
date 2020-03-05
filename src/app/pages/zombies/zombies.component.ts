@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-zombies',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./zombies.component.css']
 })
 export class ZombiesComponent implements OnInit {
-
-  constructor() { }
+  zombies: any;
+  constructor(private _dataService: DataService) { }
 
   ngOnInit(): void {
+    this._dataService.obtenerZombies()
+    .subscribe((resultados) => {
+      this.zombies = resultados;
+    });
   }
 
 }

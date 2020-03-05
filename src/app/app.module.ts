@@ -18,6 +18,7 @@ import { CerebrosComponent } from './pages/cerebros/cerebros.component';
 import { appRouting } from './app.routes';
 import { TitleComponent } from './shared/title/title.component';
 import { SettingsService } from './services/settings.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { SettingsService } from './services/settings.service';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     appRouting
   ],
   providers: [SettingsService],
