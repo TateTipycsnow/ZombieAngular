@@ -7,8 +7,8 @@ import { DOCUMENT } from '@angular/common';
 export class SettingsService implements OnInit {
 
   ajustes: Ajustes = {
-    temaEncabezado: 'bg-primary header-text-light',
-    temaMenuLateral: 'bg-primary sidebar-text-light'
+    temaEncabezado: localStorage.getItem('ajustes'),
+    temaMenuLateral: localStorage.getItem('ajustes')
   };
 
   constructor(@Inject(DOCUMENT) private _document) {
@@ -27,10 +27,10 @@ export class SettingsService implements OnInit {
     console.log('aplicando...');
     this._document
     .getElementsByClassName('app-header')[0]
-    .setAttribute('class', 'app-header header-shadow' + this.ajustes.temaEncabezado);
+    .setAttribute('class', 'app-header header-shadow ' + this.ajustes.temaEncabezado);
     this._document
     .getElementsByClassName('app-sidebar')[0]
-    .setAttribute('class', 'app-sidebar sidebar-shadow' + this.ajustes.temaMenuLateral);
+    .setAttribute('class', 'app-sidebar sidebar-shadow ' + this.ajustes.temaMenuLateral);
   }
 
   cargarAjustes() {
