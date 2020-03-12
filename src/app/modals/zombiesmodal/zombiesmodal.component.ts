@@ -17,7 +17,6 @@ export class ZombiesmodalComponent implements OnInit {
   }
 
   agregarZombie() {
-    debugger;
     this.DataService.agregarZombie(this.Name, this.Mail, this.Type).subscribe((resultado) => {
       console.log(resultado);
     });
