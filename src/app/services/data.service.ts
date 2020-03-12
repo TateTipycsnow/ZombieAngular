@@ -15,6 +15,15 @@ export class DataService {
     return this._client.get(apiUrl + 'zombies');
   }
 
+  agregarZombie(Nombre: string, Email: string, Tipo: string) {
+    let nuevoZombie = {
+      Name: Nombre,
+      Mail: Email,
+      Type: Tipo
+    };
+    return this._client.post(apiUrl + 'zombies/new', nuevoZombie);
+  }
+
   obtenerCerebros() {
     return this._client.get(apiUrl + 'cerebros');
   }

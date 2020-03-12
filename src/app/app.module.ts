@@ -19,6 +19,7 @@ import { appRouting } from './app.routes';
 import { TitleComponent } from './shared/title/title.component';
 import { SettingsService } from './services/settings.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ZombiesmodalComponent } from './modals/zombiesmodal/zombiesmodal.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     SettingsComponent,
     RegisterComponent,
     CerebrosComponent,
-    TitleComponent
+    TitleComponent,
+    ZombiesmodalComponent
   ],
   imports: [
     BrowserModule,

@@ -27,6 +27,7 @@ export class SettingsComponent implements OnInit {
   }
 
   seleccionar(event, element) {
+    debugger;
     console.log(event.target.dataset.class);
     this.CambiarColor(event.target.dataset.class, element);
 
