@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Subject } from 'rxjs';
 
 let apiUrl = environment.apiUrl;
 
@@ -8,11 +9,14 @@ let apiUrl = environment.apiUrl;
   providedIn: 'root'
 })
 export class DataService {
+  private updateZombies$ = new Subject<any>();
+  zombiesObservable = this.updateZombies$.asObservable();
 
   constructor(private _client: HttpClient) { }
 
-  obtenerZombies() {
-    return this._client.get(apiUrl + 'zombies');
+  async obtenerZombies() {
+    let zombies = await this._client.get<any>(apiUrl + 'zombies');
+    return this.updateZombies$.next(zombies);
   }
 
   agregarZombie(Nombre: string, Email: string, Tipo: string) {

@@ -11,10 +11,15 @@ export class ZombiesComponent implements OnInit {
   constructor(private _dataService: DataService) { }
 
   ngOnInit(): void {
-    this._dataService.obtenerZombies()
-    .subscribe((resultados) => {
-      this.zombies = resultados;
-    });
+    console.log('Actualizando tabla...');
+    this.actualizarTabla();
   }
 
+  actualizarTabla() {
+    this._dataService.zombiesObservable.subscribe((resultados) => {
+      this.zombies = resultados;
+    });
+
+    this._dataService.obtenerZombies();
+  }
 }
