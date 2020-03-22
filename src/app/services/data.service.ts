@@ -28,6 +28,10 @@ export class DataService {
     return this._client.post(apiUrl + 'zombies/new', nuevoZombie);
   }
 
+  eliminarZombie() {
+    
+  }
+
   obtenerCerebros() {
     return this._client.get(apiUrl + 'cerebros');
   }

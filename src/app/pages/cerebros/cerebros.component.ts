@@ -14,7 +14,7 @@ export class CerebrosComponent implements OnInit {
     this._dataService.obtenerCerebros()
     .subscribe((resultados) => {
       this.cerebros = resultados;
-    })
+    });
   }
 
 }
