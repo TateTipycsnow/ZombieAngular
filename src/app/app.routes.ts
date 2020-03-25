@@ -8,7 +8,6 @@ import { CerebrosComponent } from './pages/cerebros/cerebros.component';
 
 const routes: Routes = [
     { path: '', component: DashboardComponent },
-    { path: 'dashboard', component: DashboardComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'zombies', component: ZombiesComponent },
