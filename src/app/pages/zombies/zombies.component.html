@@ -12,6 +12,7 @@
                         <th>Nombre</th>
                         <th>Email</th>
                         <th>Tipo</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -20,6 +21,14 @@
                         <td>{{ zombie.Name }}</td>
                         <td>{{ zombie.Mail }}</td>
                         <td>{{ zombie.Type }}</td>
+                        <td>
+                            <a (click)="eliminarZombie(zombie._id)">
+                                <i class="fas fa-trash danger"></i>
+                            </a>
+                            <a>
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

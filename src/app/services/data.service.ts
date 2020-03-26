@@ -28,8 +28,8 @@ export class DataService {
     return this._client.post(apiUrl + 'zombies/new', nuevoZombie);
   }
 
-  eliminarZombie() {
-    
+  eliminarZombie(id: string) {
+    return this._client.delete(apiUrl + 'zombies/delete' + `/${id}`);
   }
 
   obtenerCerebros() {

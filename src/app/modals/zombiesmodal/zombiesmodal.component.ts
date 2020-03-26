@@ -19,11 +19,15 @@ export class ZombiesmodalComponent implements OnInit {
   }
 
   agregarZombie() {
-    this.DataService.agregarZombie(this.Name, this.Mail, this.Type).subscribe((resultado) => {
+    this.DataService.agregarZombie(this.Name, this.Mail, this.Type).subscribe(() => {
       this._renderer.selectRootElement(this.modal.nativeElement, true).click();
       this.DataService.obtenerZombies();
     },(error) => {
       console.log(error);
     });
+    this.Name = '';
+    this.Mail = '';
+    this.Type = '';
+    
   }
 }

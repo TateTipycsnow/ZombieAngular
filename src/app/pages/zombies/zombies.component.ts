@@ -22,4 +22,11 @@ export class ZombiesComponent implements OnInit {
 
     this._dataService.obtenerZombies();
   }
+
+  async eliminarZombie(id: string) {
+    await this._dataService.eliminarZombie(id).subscribe((resultado) => {
+      console.log(resultado);
+      this.actualizarTabla();
+    });
+  }
 }
