@@ -28,6 +28,15 @@ export class DataService {
     return this._client.post(apiUrl + 'zombies/new', nuevoZombie);
   }
 
+  editarZombie(id: string, Nombre: string, Email: string, Tipo: string) {
+    let zombieEditado = {
+      Name: Nombre,
+      Mail: Email,
+      Type: Tipo
+    };
+    return this._client.put(apiUrl + 'zombies/edit' + `/${id}`, zombieEditado);
+  }
+
   eliminarZombie(id: string) {
     return this._client.delete(apiUrl + 'zombies/delete' + `/${id}`);
   }

@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar Zombies</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Accion Zombies</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <div class="position-relative form-group">
                     <label for="Name">Nombre</label>
-                    <input [(ngModel)]='Name' name="Name" id="Name" placeholder="Introduzca el nombre" type="text" class="form-control form-control-sm">
+                    <input [(ngModel)]='Name' name="Name" id="Name" placeholder="Introduzca el nombre" type="text" class="form-control form-control-sm" value="{{Name}}">
                 </div>
                 <div class="position-relative form-group">
                     <label for="Mail">Email</label>
@@ -30,7 +30,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button (click)="agregarZombie()" type="button" class="btn btn-primary">Guardar Cambios</button>
+                <button (click)="opcionZombie()" type="button" class="btn btn-primary">Guardar Cambios</button>
             </div>
         </div>
     </div>

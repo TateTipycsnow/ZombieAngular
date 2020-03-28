@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
+import { PasoDatoService } from 'src/app/services/paso-dato.service';
 
 @Component({
   selector: 'app-zombies',
@@ -8,7 +9,7 @@ import { DataService } from '../../services/data.service';
 })
 export class ZombiesComponent implements OnInit {
   zombies: any;
-  constructor(private _dataService: DataService) { }
+  constructor(private _dataService: DataService, private dato: PasoDatoService) { }
 
   ngOnInit(): void {
     console.log('Actualizando tabla...');
@@ -28,5 +29,13 @@ export class ZombiesComponent implements OnInit {
       console.log(resultado);
       this.actualizarTabla();
     });
+  }
+
+  pasarDatos(id: string, name: string) {
+    this.dato.pasardato(id, name);
+  }
+
+  agregar() {
+    this.dato.agregar();
   }
 }

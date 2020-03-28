@@ -1,9 +1,7 @@
-<app-title></app-title>
-
 <div class="col-lg-6">
     <div class="main-card mb-3 card">
         <div class="card-body">
-            <button type="button" class="btm mr-2 mb-2 btn-primary pull-right" data-toggle="modal" data-target="#modal">Agregar Zombie</button>
+            <button type="button" (click)="agregar()" class="btn mr-2 mb-2 btn-primary pull-right" data-toggle="modal" data-target="#modal">Agregar Zombie</button>
             <h5 class="card-title">Zombies</h5>
             <table class="mb-0 table">
                 <thead>
@@ -22,12 +20,12 @@
                         <td>{{ zombie.Mail }}</td>
                         <td>{{ zombie.Type }}</td>
                         <td>
-                            <a (click)="eliminarZombie(zombie._id)">
+                            <button type="button" (click)="eliminarZombie(zombie._id)" class="btn btn-dark">
                                 <i class="fas fa-trash danger"></i>
-                            </a>
-                            <a>
+                            </button>
+                            <button type="button" (click)="pasarDatos(zombie._id, zombie.Name)" class="btn btn-dark pull-right" data-toggle="modal" data-target="#modal">
                                 <i class="fas fa-edit"></i>
-                            </a>
+                            </button>
                         </td>
                     </tr>
                 </tbody>

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { DataService } from '../../services/data.service';
+import { PasoDatoService } from '../../services/paso-dato.service';
 
 @Component({
   selector: 'app-zombiesmodal',
@@ -7,27 +8,42 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./zombiesmodal.component.css']
 })
 export class ZombiesmodalComponent implements OnInit {
-  @ViewChild('modal') public modal: ElementRef;
+  @ViewChild('modalZombie') public modal: ElementRef;
 
-  Name: string;
-  Mail: string;
-  Type: string;
+  _id = '';
+  Name = '';
+  Mail = '';
+  Type = '';
+  mensaje = '';
 
-  constructor(private DataService: DataService, private _renderer: Renderer2) { }
+  constructor(private DataService: DataService, private _renderer: Renderer2, private dato: PasoDatoService) { }
 
   ngOnInit(): void {
+    this.mensaje = this.dato.mensaje;
   }
 
-  agregarZombie() {
-    this.DataService.agregarZombie(this.Name, this.Mail, this.Type).subscribe(() => {
-      this._renderer.selectRootElement(this.modal.nativeElement, true).click();
-      this.DataService.obtenerZombies();
-    },(error) => {
-      console.log(error);
-    });
+  opcionZombie() {
+    if (this.dato._id) {
+      this.DataService.editarZombie(this.dato._id, this.Name, this.Mail, this.Type).subscribe((resultado) => {
+        console.log(resultado);
+        this._renderer.selectRootElement(this.modal.nativeElement, true).click();
+        this.DataService.obtenerZombies();
+      }, (error) => {
+        console.log(error);
+      });
+    }
+    else {
+      this.DataService.agregarZombie(this.Name, this.Mail, this.Type).subscribe(() => {
+        this._renderer.selectRootElement(this.modal.nativeElement, true).click();
+        this.DataService.obtenerZombies();
+      }, (error) => {
+        console.log(error);
+      });
+    }
+    // Reestablece Los datos
+    this._id = '';
     this.Name = '';
     this.Mail = '';
     this.Type = '';
-    
   }
 }
