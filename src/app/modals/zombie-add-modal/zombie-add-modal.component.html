@@ -1,9 +1,9 @@
 <!-- Modal -->
-<div class="modal fade" id="modal" #modal tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalZombieAdd" #modalZombieAdd tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Accion Zombies</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Zombie</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <div class="position-relative form-group">
                     <label for="Name">Nombre</label>
-                    <input [(ngModel)]='Name' name="Name" id="Name" placeholder="Introduzca el nombre" type="text" class="form-control form-control-sm" value="{{Name}}">
+                    <input [(ngModel)]='Name' name="Name" id="Name" placeholder="Introduzca el nombre" type="text" class="form-control form-control-sm">
                 </div>
                 <div class="position-relative form-group">
                     <label for="Mail">Email</label>
@@ -28,9 +28,19 @@
                     </select>
                 </div>
             </div>
+
+            <div *ngIf="errorName" class="mb-3 card text-white card-body bg-danger">
+                <h5 class="text-white card-title">Name</h5>{{error.error.Mensaje.Name.message}}</div>
+
+            <div *ngIf="errorMail" class="mb-3 card text-white card-body bg-danger">
+                <h5 class="text-white card-title">Email</h5>{{error.error.Mensaje.Mail.message}}</div>
+
+            <div *ngIf="errorType" class="mb-3 card text-white card-body bg-danger">
+                <h5 class="text-white card-title">Type</h5>{{error.error.Mensaje.Type.message}}</div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button (click)="opcionZombie()" type="button" class="btn btn-primary">Guardar Cambios</button>
+                <button (click)="agregarZombie()" type="button" class="btn btn-primary">Guardar Cambios</button>
             </div>
         </div>
     </div>

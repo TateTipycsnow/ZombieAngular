@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
-import { PasoDatoService } from 'src/app/services/paso-dato.service';
 
 @Component({
   selector: 'app-zombies',
@@ -9,33 +8,35 @@ import { PasoDatoService } from 'src/app/services/paso-dato.service';
 })
 export class ZombiesComponent implements OnInit {
   zombies: any;
-  constructor(private _dataService: DataService, private dato: PasoDatoService) { }
+  user: any;
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    console.log('Actualizando tabla...');
-    this.actualizarTabla();
+    if ( this.dataService.logged === false) {
+      this.dataService.redirectLogin();
+    } else {
+      console.log('Actualizando tabla...');
+      this.actualizarTabla();
+    }
   }
 
   actualizarTabla() {
-    this._dataService.zombiesObservable.subscribe((resultados) => {
+    this.dataService.zombieObservable.subscribe((resultados) => {
       this.zombies = resultados;
     });
 
-    this._dataService.obtenerZombies();
+    this.dataService.obtenerZombies(this.dataService.IdU);
   }
 
   async eliminarZombie(id: string) {
-    await this._dataService.eliminarZombie(id).subscribe((resultado) => {
+    await this.dataService.eliminarZombie(id).subscribe((resultado) => {
       console.log(resultado);
       this.actualizarTabla();
     });
   }
 
-  pasarDatos(id: string, name: string) {
-    this.dato.pasardato(id, name);
-  }
-
-  agregar() {
-    this.dato.agregar();
+  pasarDatos(id: string, name: string, mail: string, type: string) {
+    this.dataService.pasarDatosZ(id, name, mail, type);
   }
 }

@@ -1,4 +1,4 @@
-import { Injectable, Inject, OnInit } from '@angular/core';
+import { Injectable, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Injectable({
@@ -11,8 +11,7 @@ export class SettingsService implements OnInit {
     temaMenuLateral: localStorage.getItem('ajustes')
   };
 
-  constructor(@Inject(DOCUMENT) private _document) {
-  }
+  constructor(@Inject(DOCUMENT) private document) { }
 
   ngOnInit() {
     this.cargarAjustes();
@@ -25,10 +24,10 @@ export class SettingsService implements OnInit {
 
   aplicar() {
     console.log('aplicando...');
-    this._document
+    this.document
     .getElementsByClassName('app-header')[0]
     .setAttribute('class', 'app-header header-shadow ' + this.ajustes.temaEncabezado);
-    this._document
+    this.document
     .getElementsByClassName('app-sidebar')[0]
     .setAttribute('class', 'app-sidebar sidebar-shadow ' + this.ajustes.temaMenuLateral);
   }

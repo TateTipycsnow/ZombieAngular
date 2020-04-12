@@ -1,1 +1,33 @@
-<p>login works!</p>
+<div class="h-100 bg-plum-plate bg-animation">
+    <div class="d-flex h-100 justify-content-center align-items-center">
+        <div class="mx-auto app-login-box col-md-8">
+            <div class="app-logo-inverse mx-auto mb-3"></div>
+            <div class="modal-dialog w-100 mx-auto">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="h5 modal-title text-center">
+                            <h4 class="mt-2">
+                                <div>Bienvenido de vuelta,</div>
+                                <span>Inicia sesion debajo.</span></h4>
+                        </div>
+
+                        <form [formGroup]="loginForm">
+                            <input formControlName="Mail" type="email " id="Email" class="form-control " placeholder="Introducir Email..." required=" " autofocus=" ">
+                            <input formControlName="Password" type="password" id="Password " class="form-control " placeholder="Introducir contraseña..." required=" ">
+                        </form>
+
+                        <div class="divider"></div>
+                        <h6 class="mb-0">
+                            ¿No Tienes Cuenta?
+                            <a href="register" class="text-primary">Registrarse</a></h6>
+                    </div>
+                    <div class="modal-footer clearfix">
+                        <div class="float-right">
+                            <button (click)="login()" type="button" class="btn btn-primary btn-lg">Login to Dashboard</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

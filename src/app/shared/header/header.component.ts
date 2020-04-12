@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  user: any;
+
+  constructor(private dataService: DataService, private app: AppComponent) { }
 
   ngOnInit(): void {
+    this.session();
   }
 
+  logout() {
+    localStorage.removeItem('token');
+    this.app.logged = false;
+    this.dataService.logged = false;
+    this.dataService.redirectLogin();
+  }
+
+  session() {
+    this.dataService.getUserName().subscribe((resultado) => {
+      this.user = resultado;
+    }, (error) => {
+      console.log(error);
+    });
+   }
 }

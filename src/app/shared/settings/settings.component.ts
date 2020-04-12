@@ -1,6 +1,6 @@
-import { SettingsService } from '../../services/settings.service';
 import { Component, OnInit } from '@angular/core';
 import { COLORS } from '../../data/colors';
+import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'app-settings',
@@ -10,27 +10,24 @@ import { COLORS } from '../../data/colors';
 export class SettingsComponent implements OnInit {
   colors = COLORS;
 
-  constructor(public _ajustes: SettingsService) {
-  }
+  constructor(public ajustes: SettingsService) { }
 
   CambiarColor(color: string, element: string) {
     if(element === 'header') {
-      this._ajustes.ajustes.temaEncabezado = color;
+      this.ajustes.ajustes.temaEncabezado = color;
     } else if(element === 'sidebar') {
-      this._ajustes.ajustes.temaMenuLateral = color;
+      this.ajustes.ajustes.temaMenuLateral = color;
     }
-    this._ajustes.guardarAjustes();
+    this.ajustes.guardarAjustes();
   }
 
   ngOnInit(): void {
-    this._ajustes.cargarAjustes();
+    this.ajustes.cargarAjustes();
   }
 
   seleccionar(event, element) {
-    debugger;
     console.log(event.target.dataset.class);
     this.CambiarColor(event.target.dataset.class, element);
-
   }
 
 }
